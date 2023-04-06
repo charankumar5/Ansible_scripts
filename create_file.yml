@@ -1,0 +1,21 @@
+---
+- name: Creating file. 
+  hosts: webservers
+  become: true
+
+
+  tasks:
+  - name: Creating new file.
+    file:
+            path: /home/charan/file2
+            state: touch
+            owner: charan
+  - name: creating another file.
+    file:
+            path: /home/charan/file3
+            state: touch
+            owner: charan
+...
+
+
+

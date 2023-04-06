@@ -1,0 +1,24 @@
+---
+- name: Creating directory. 
+  hosts: webservers
+  become: true
+
+
+  tasks:
+
+  - name: Creating new direcectory.
+    file:
+            path: /home/charan/dir1
+            state: directory
+            owner: charan
+
+
+  - name: creating another directory.
+    file:
+            path: /home/charan/dir2
+            state: directory
+            owner: charan
+...
+
+
+

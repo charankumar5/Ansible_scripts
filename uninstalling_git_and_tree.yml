@@ -1,0 +1,19 @@
+---
+- name: Uninstalling multiple tools at a time. 
+  hosts: all
+  become: true
+
+
+  tasks:
+  - name: uninstalling git..
+    yum:
+     name: git
+     state: removed
+  - name: uninstalling a tree tool.
+    yum:
+     name: tree
+     state: absent
+...
+
+
+

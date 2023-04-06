@@ -1,0 +1,16 @@
+---
+- name: Creating multiple users at a time. 
+  hosts: all
+  become: true
+  tasks:
+  - name: installing a git.
+    yum:
+     name: git
+     state: installed
+  - name: installing a tree tool.
+    yum:
+     name: tree
+     state: installed
+
+
+

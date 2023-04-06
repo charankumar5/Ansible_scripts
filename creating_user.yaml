@@ -1,0 +1,9 @@
+---
+- name: This play book will create a new_user.
+  hosts: webservers
+  become: yes
+  tasks:
+          - name: Creating an user.
+            user: name=navaz
+
+...

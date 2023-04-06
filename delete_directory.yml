@@ -1,0 +1,24 @@
+---
+- name: Deleting a  directory. 
+  hosts: webservers
+  become: true
+
+
+  tasks:
+
+  - name: Deleting a direcectory.
+    file:
+            path: /home/charan/dir1
+            state: absent
+            owner: charan
+
+
+  - name: Deleting another directory.
+    file:
+            path: /home/charan/dir2
+            state: absent
+            owner: charan
+...
+
+
+

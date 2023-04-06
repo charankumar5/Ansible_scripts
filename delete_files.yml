@@ -1,0 +1,29 @@
+---
+- name: Deleting files. 
+  hosts: webservers
+  become: true
+
+
+  tasks:
+
+  - name: Deleting a  file.
+    file:
+            path: /home/charan/file1
+            state: absent
+            owner: charan
+
+  - name: Deleting another file.
+    file:
+            path: /home/charan/file2
+            state: absent
+            owner: charan
+
+  - name: Deleting last file.
+    file:
+            path: /home/charan/file3
+            state: absent
+            owner: charan
+...
+
+
+
