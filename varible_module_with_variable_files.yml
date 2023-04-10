@@ -1,0 +1,13 @@
+--- 
+- name: Using variables to create users.
+  hosts: webservers
+  become: true
+
+  vars_files: 
+  - users_list.yml
+
+  tasks:
+  - name: create "{{user}}" using variables.
+    user: 
+      name: "{{user}}"
+

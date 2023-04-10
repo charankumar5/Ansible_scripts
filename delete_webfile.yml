@@ -1,0 +1,11 @@
+---
+- name: Deleting the file.
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Deleting webfiles in the other server.
+    file:
+        path: /home/charan/index.html
+        state: absent
+        owner: charan

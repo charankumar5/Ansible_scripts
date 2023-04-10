@@ -1,0 +1,43 @@
+---
+- name: Installing Java and Tomcat.
+  hosts: webservers
+  become: true
+
+  tasks:
+  - name: Install Java in the RedHat Machine
+    yum:
+      name: java-1.8*
+      state: installed
+    when: ansible_os_family == "RedHat"
+
+  - name: Install Java in the Debian Machine
+    apt:
+      name: java-1.8*
+      state: installed
+    when: ansible_os_family == "Debian"
+  
+  - name: Download tomcat tar file.
+    get_url:
+       url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.73/bin/apache-tomcat-9.0.73.tar.gz
+       dest: /lib/apache-tomcat-9.0.73.tar.gz
+       mode: 0440
+  - name: Unzip the downloaded file.
+    unarchive:
+      src: /lib/apache-tomcat-9.0.73.tar.gz
+      dest: /lib
+      remote_src: True
+
+  - name: Add executable permissions to the file.
+    file: 
+      path: /lib/apache-tomcat-9.0.73/bin/startup.sh
+      mode: 0777
+
+  - name: Execute the Startup script to start the services for Tomcat.
+    shell: nohup ./startup.sh
+    args:
+      chdir: /lib/apache-tomcat-9.0.73/bin
+
+
+      
+
+

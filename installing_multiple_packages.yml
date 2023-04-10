@@ -1,0 +1,16 @@
+---
+- name: Installing multiple packages. 
+  hosts: webservers
+  become: true
+
+  tasks:
+  - name: installing multiple packages at a time.
+    yum:
+      name: [ 'httpd', 'git', 'tree', 'wget', 'docker', 'mysql', 'which' ]
+      state: installed
+
+  - name: Starting services.
+    service:
+      name: httpd
+      state: started
+

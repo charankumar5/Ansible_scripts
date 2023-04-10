@@ -1,0 +1,17 @@
+---
+- name: uninstalling multiple packages. 
+  hosts: webservers
+  become: true
+
+  tasks:
+  - name: Stopping services.
+    service:
+      name: httpd
+      state: stopped
+
+  - name: uninstalling multiple packages at a time.
+    yum:
+      name: [ 'httpd', 'git', 'tree', 'wget', 'docker', 'mysql', 'which' ]
+      state: absent
+
+
